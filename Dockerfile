@@ -35,7 +35,7 @@ RUN sed -i 's/;opcache.max_accelerated_files=10000/opcache.max_accelerated_files
 RUN sed -i 's/;opcache.validate_timestamps=1/opcache.validate_timestamps=0/g' /etc/php/7.1/cli/php.ini
 RUN sed -i 's/;opcache.save_comments=1/opcache.save_comments=1/g' /etc/php/7.1/cli/php.ini
 RUN sed -i 's/;opcache.fast_shutdown=0/opcache.fast_shutdown=0/g' /etc/php/7.1/cli/php.ini
-RUN sed -i 's#;opcache.file_cache=#opcache.file_cache=/tmp/php-opcache#g' /etc/php/7.1/cli/php.ini
+#RUN sed -i 's#;opcache.file_cache=#opcache.file_cache=/tmp/php-opcache#g' /etc/php/7.1/cli/php.ini
 
 
 RUN apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y
