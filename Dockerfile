@@ -36,10 +36,12 @@ RUN sed -i 's/;opcache.validate_timestamps=1/opcache.validate_timestamps=0/g' /e
 RUN sed -i 's/;opcache.save_comments=1/opcache.save_comments=1/g' /etc/php/7.1/cli/php.ini
 RUN sed -i 's/;opcache.fast_shutdown=0/opcache.fast_shutdown=0/g' /etc/php/7.1/cli/php.ini
 #RUN sed -i 's#;opcache.file_cache=#opcache.file_cache=/tmp/php-opcache#g' /etc/php/7.1/cli/php.ini
-
-
+RUN apt-get install xz-utils
 RUN apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y
 
+RUN wget -O /tmp/ffmpeg-release-64bit-static.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-64bit-static.tar.xz
+RUN cd /tmp && tar xf ffmpeg-release-64bit-static.tar.xz
+RUN cd /tmp/ffmpeg-3.3.2-64bit-static && cp ffmpeg /usr/bin/ffmpeg && cp ffprobe /usr/bin/ffprobe && chmod +x /usr/bin/ffmpeg && chmod +x /usr/bin/ffprobe
 
 RUN mkdir -p /run/php
 
